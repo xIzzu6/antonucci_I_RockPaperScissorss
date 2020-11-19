@@ -8,39 +8,62 @@ choices = ["rock", "paper", "scissors"]
 # computer is our AI opponent - let it make choice
 computer = choices[randint(0, 2)]
 
+# give our player and our AI some lives
+player_lives = 5
+ai_lives = 5
 
-# RPS Game - give the user some weapon options
-player = input("Pick rock, paper or scissors: ")
+# True and False are boolean data types -> the equivalent of 1 and 0
+player = False
 
-# validate that the input worked
-print("Player chose " + player)
-print("AI chose: " + computer)
+while player is False:
 
-# check to see who won or if it's a tie
-if (computer == player):
-	print("tie")
-	# reset the game loop and have the user choose again
+	# RPS Game - give the user some weapon options
+	player = input("Pick rock, paper or scissors: ")
 
-elif (computer == "rock"):
-	if (player == "scissors"):
-		pring("you lose!")
-		# take a life away from the player
-	else:
-		print("you won!")
-		# take a life away from the player 
+	#player = True 
 
-elif (computer == "paper"):
-	if (player == "rock"):
-		pring("you lose!")
-		# take a life away from the player
-	else:
-		print("you won!")
-		# take a life away from the player 
+	# validate that the input worked
+	print("Player chose " + player)
+	print("AI chose: " + computer)
 
-elif (computer == "scissors"):
-	if (player == "paper"):
-		pring("you lose!")
-		# take a life away from the player
-	else:
-		print("you won!")
-		# take a life away from the player 
+	# check to see who won or if it's a tie
+	if (computer == player):
+		print("tie")
+		# reset the game loop and have the user choose again
+
+	elif (computer == "rock"):
+		if (player == "scissors"):
+			print("you lose!")
+			# take a life away from the player
+			player_lives = player_lives - 1
+		else:
+			print("you won!")
+			# take a life away from the AI
+			ai_lives = ai_lives - 1
+
+	elif (computer == "paper"):
+		if (player == "rock"):
+			print("you lose!")
+			# take a life away from the player
+			player_lives = player_lives - 1
+		else:
+			print("you won!")
+			# take a life away from the AI
+			ai_lives = ai_lives - 1
+
+	elif (computer == "scissors"):
+		if (player == "paper"):
+			print("you lose!")
+			# take a life away from the player
+			player_lives = player_lives - 1
+		else:
+			print("you won!")
+			# take a life away from the AI
+			ai_lives = ai_lives - 1
+
+	print("Player has", player_lives, "lives left")
+	print("AI has", ai_lives, "lives left")
+
+	# make loop keep running by setting player back to False
+	#unset, so that our loop condition above will evaluae to True
+	player = False
